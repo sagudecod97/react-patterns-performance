@@ -1,18 +1,25 @@
 import "./App.scss";
+import { authors } from "./data/authors";
+import { books } from "./data/books";
 
-import ScreenSplitter from "./components/screen-splitter/screen-splitter";
-
-const SplitItem = ({ title }) => {
-  return <h2>{title}</h2>;
-};
+import AuthorsList from "./components/lists/authors-list/authors-list";
+import BooksList from "./components/lists/books-list/books-list";
+import ListsComponent from "./components/lists/lists-component";
 
 function App() {
   return (
     <div className="App">
-      <ScreenSplitter leftClass="split-left" rigthClass="split-right">
-        <SplitItem title="Hello world, left!" />
-        <SplitItem title="Hello world, right!" />
-      </ScreenSplitter>
+      <ListsComponent
+        items={authors}
+        sourcePropName="authors"
+        ListToRender={AuthorsList}
+      />
+
+      <ListsComponent
+        items={books}
+        sourcePropName="books"
+        ListToRender={BooksList}
+      />
     </div>
   );
 }
